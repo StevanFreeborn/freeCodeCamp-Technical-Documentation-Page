@@ -5,7 +5,120 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C# Specification</title>
+
+    <!--Prism Styling-->
+    <link rel="stylesheet" href="css/prism.css">
+
 </head>
 <body>
+    <main id="main-doc">
+        <section id="types" class="main-section">
+            <header>Types</header>
+            <article>
+                <p>
+                    The types of the C# language are divided into two main categories: reference types and value types. Both value types and reference types may be generic types, which take one or more type parameters. Type parameters can designate both value types and reference types.
+                </p>
+                <pre>
+                    <code class="language-csharp">
+type
+    : reference_type
+    | value_type
+    | type_parameter
+    // unsafe code support
+    | pointer_type
+    ;
+                    </code>
+                </pre>
+                <p>
+                    Value types differ from reference types in that variables of the value types directly contain their data, whereas variables of the reference types store references to their data, the latter being known as objects. With reference types, it is possible for two variables to reference the same object, and thus possible for operations on one variable to affect the object referenced by the other variable. With value types, the variables each have their own copy of the data, and it is not possible for operations on one to affect the other.
+                </p>
+                <p>
+                    C#'s type system is unified such that a value of any type can be treated as an object. Every type in C# directly or indirectly derives from the object class type, and object is the ultimate base class of all types. Values of reference types are treated as objects simply by viewing the values as type object. Values of value types are treated as objects by performing boxing and unboxing operations.
+                </p>
+            </article>
+        </section>
+        <section id="variables" class="main-section">
+            <header>Variables</header>
+            <article>
+                <p>
+                    Variables represent storage locations. Every variable has a type that determines what values can be stored in the variable. C# is a type-safe language, and the C# compiler guarantees that values stored in variables are always of the appropriate type. The value of a variable can be changed through assignment or through use of the <code class="language-csharp">++</code> and <code class="language-csharp">--</code> operators.
+                </p>
+                <p>
+                    A variable shall be definitely assigned before its value can be obtained.
+                </p>
+                <p>
+                    Variables are either initially assigned or initially unassigned. An initially assigned variable has a well-defined initial value and is always considered definitely assigned. An initially unassigned variable has no initial value. For an initially unassigned variable to be considered definitely assigned at a certain location, an assignment to the variable shall occur in every possible execution path leading to that location.
+                </p>
+                <p>
+                    C# defines seven categories of variables: static variables, instance variables, array elements, value parameters, reference parameters, output parameters, and local variables. The subclauses that follow describe each of these categories.
+                </p>
+                <p>
+                    Example: In the following code...
+                </p>
+                <pre>
+                    <code class="language-csharp">
+class A
+{
+    public static int x;
+    int y;
+
+    void F(int[] v, int a, ref int b, out int c)
+    {
+        int i = 1;
+        c = a + b++;
+    }
+}
+                    </code>
+                </pre>
+                <p>
+                    ... <code class="language-charp">x</code> is a static variable, <code class="language-charp">y</code> is an instance variable, <code class="language-charp">v[0]</code> is an array element, <code class="language-charp">a</code> is a value parameter, <code class="language-charp">b</code> is a reference parameter, <code class="language-charp">c</code> is an output parameter, and <code class="language-charp">i</code> is a local variable.
+                </p>
+            </article>
+        </section>
+        <section id="classes" class="main-section">
+            <header>Classes</header>
+            <article>
+                <p>
+                    A class_declaration is a type_declaration that declares a new class.
+                </p>
+                <pre>
+                    <code class="language-csharp">
+class_declaration
+    : attributes? class_modifier* 'partial'? 'class' identifier type_parameter_list?
+    class_base? type_parameter_constraints_clause* class_body ';'?
+    ;
+                    </code>
+                </pre>
+                <p>
+                    A class_declaration consists of an optional set of attributes, followed by an optional set of class_modifiers, followed by an optional partial modifier, followed by the keyword class and an identifier that names the class, followed by an optional type_parameter_list, followed by an optional class_base specification, followed by an optional set of type_parameter_constraints_clauses, followed by a class_body, optionally followed by a semicolon.
+                </p>
+                <p>
+                    A class declaration shall not supply a type_parameter_constraints_clauses unless it also supplies a type_parameter_list.
+                </p>
+                <p>
+                    A class declaration that supplies a type_parameter_list is a generic class declaration. Additionally, any class nested inside a generic class declaration or a generic struct declaration is itself a generic class declaration, since type arguments for the containing type shall be supplied to create a constructed type.
+                </p>
+            </article>
+        </section>
+        <section id="structs" class="main-section">
+            <header>Structs</header>
+        </section>
+        <section id="arrays" class="main-section">
+            <header>Arrays</header>
+        </section>
+        <section id="interfaces" class="main-section">
+            <header>Interfaces</header>
+        </section>
+        <section id="enums" class="main-section">
+            <header>Enums</header>
+        </section>
+        <section id="delegates" class="main-section">
+            <header>Delegates</header>
+        </section>
+    </main>
+
+    <!--Prism Scripts-->
+    <script src="js/prism.js"></script>
+
 </body>
 </html>
