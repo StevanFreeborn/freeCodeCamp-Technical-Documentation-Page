@@ -9,8 +9,40 @@
     <!--Prism Styling-->
     <link rel="stylesheet" href="css/prism.css">
 
+    <!--Site Styling-->
+    <link rel="stylesheet" href="css/site.css">
+
 </head>
 <body>
+    <nav id="navbar">
+        <header>C# Documentation</header>
+        <ul>
+            <li>
+                <a class="nav-link" href="#types">Types</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#variables">Variables</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#classes">Classes</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#structs">Structs</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#arrays">Arrays</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#interfaces">Interfaces</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#enums">Enums</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#reference">Reference</a>
+            </li>
+        </ul>
+    </nav>
     <main id="main-doc">
         <section id="types" class="main-section">
             <header>Types</header>
@@ -90,8 +122,19 @@ class_declaration
                     </code>
                 </pre>
                 <p>
-                    A class_declaration consists of an optional set of attributes, followed by an optional set of class_modifiers, followed by an optional partial modifier, followed by the keyword class and an identifier that names the class, followed by an optional type_parameter_list, followed by an optional class_base specification, followed by an optional set of type_parameter_constraints_clauses, followed by a class_body, optionally followed by a semicolon.
+                    A class_declaration consists... 
                 </p>
+                <ul>
+                    <li>an optional set of attributes</li>
+                    <li>followed by an optional set of class_modifiers</li>
+                    <li>followed by an optional partial modifier</li>
+                    <li>followed by the keyword class and an identifier that names the class</li>
+                    <li>followed by an optional type_parameter_list</li>
+                    <li>followed by an optional class_base specification</li>
+                    <li>followed by an optional set of type_parameter_constraints_clauses</li>
+                    <li>followed by a class_body</li>
+                    <li>optionally followed by a semicolon</li>
+                </ul>
                 <p>
                     A class declaration shall not supply a type_parameter_constraints_clauses unless it also supplies a type_parameter_list.
                 </p>
@@ -102,20 +145,139 @@ class_declaration
         </section>
         <section id="structs" class="main-section">
             <header>Structs</header>
+            <article>
+                <p>
+                    Structs are similar to classes in that they represent data structures that can contain data members and function members. However, unlike classes, structs are value types and do not require heap allocation. A variable of a <code class="language-csharp">struct</code> type directly contains the data of the <code class="language-csharp">struct</code>, whereas a variable of a class type contains a reference to the data, the latter known as an object.
+                </p>
+                <p>
+                    The simple types provided by C#, such as int, double, and bool, are, in fact, all struct types.
+                </p>
+                <p>
+                    A struct_declaration is a type_declaration that declares a new struct:
+                </p>
+                <pre>
+                    <code class="language-csharp">
+struct_declaration
+: attributes? struct_modifier* 'partial'? 'struct' identifier type_parameter_list?
+  struct_interfaces? type_parameter_constraints_clause* struct_body ';'?
+;
+                    </code>
+                </pre>
+                <p>
+                    A struct_declaration consists of...
+                </p>
+                <ul>
+                    <li>an optional set of attributes</li>
+                    <li>followed by an optional set of struct_modifiers</li>
+                    <li>followed by an optional partial modifier</li>
+                    <li>followed by the keyword struct and an identifier that names the struct</li>
+                    <li>followed by an optional type_parameter_list specification</li>
+                    <li>followed by an optional struct_interfaces specification</li>
+                    <li>followed by an optional type_parameter_constraints-clauses specification</li>
+                    <li>followed by a struct_body</li>
+                    <li>optionally followed by a semicolon</li>
+                </ul>
+                <p>
+                    A struct declaration shall not supply a type_parameter_constraints_clauses unless it also supplies a type_parameter_list.
+                </p>
+                <p>
+                    A struct declaration that supplies a type_parameter_list is a generic struct declaration.
+                </p>
+            </article>
         </section>
         <section id="arrays" class="main-section">
             <header>Arrays</header>
+            <article>
+                <p>
+                    An array is a data structure that contains a number of variables that are accessed through computed indices. The variables contained in an array, also called the elements of the array, are all of the same type, and this type is called the element type of the array.
+                </p>
+                <p>
+                    An array has a rank that determines the number of indices associated with each array element. The rank of an array is also referred to as the dimensions of the array. An array with a rank of one is called a single-dimensional array. An array with a rank greater than one is called a multi-dimensional array. Specific sized multi-dimensional arrays are often referred to as two-dimensional arrays, three-dimensional arrays, and so on. Each dimension of an array has an associated length that is an integral number greater than or equal to zero. The dimension lengths are not part of the type of the array, but rather are established when an instance of the array type is created at run-time. The length of a dimension determines the valid range of indices for that dimension: For a dimension of length <code class="language-csharp">N</code>, indices can range from <code class="language-csharp">0</code> to <code class="language-csharp">N - 1</code> inclusive. The total number of elements in an array is the product of the lengths of each dimension in the array. If one or more of the dimensions of an array have a length of zero, the array is said to be empty.
+                </p>
+                <p>
+                    The element type of an array can itself be an array type. Such arrays of arrays are distinct from multi-dimensional arrays and can be used to represent "jagged arrays".
+                </p>
+                <pre>
+                    <code class="language-csharp">
+int[][] pascals = {
+    new int[] {1},
+    new int[] {1, 1},
+    new int[] {1, 2, 1},
+    new int[] {1, 3, 3, 1}
+};
+                    </code>
+                </pre>
+                <p>
+                    Every array type is a reference type. The element type of an array can be any type, including value types and array types.
+                </p>
+            </article>
         </section>
         <section id="interfaces" class="main-section">
             <header>Interfaces</header>
+            <article>
+                <P>
+                    An interface defines a contract. A class or struct that implements an interface shall adhere to its contract. An interface may inherit from multiple base interfaces, and a class or struct may implement multiple interfaces.
+                </P>
+                <P>
+                    Interfaces can contain methods, properties, events, and indexers. The interface itself does not provide implementations for the members that it declares. The interface merely specifies the members that shall be supplied by classes or structs that implement the interface.
+                </P>
+                <P>
+                    An interface_declaration is a type_declaration that declares a new interface type.
+                </P>
+                <pre>
+                    <code class="language-csharp">
+interface_declaration
+    : attributes? interface_modifier* 'partial'? 'interface' identifier variant_type_parameter_list?
+      interface_base? type_parameter_constraints_clause* interface_body ';'?
+      ;
+                    </code>
+                </pre>
+                <P>
+                    An interface_declaration consists of an optional set of attributes, followed by an optional set of interface_modifiers, followed by an optional partial modifier, followed by the keyword interface and an identifier that names the interface, followed by an optional variant_type_parameter_list specification, followed by an optional interface_base specification, followed by an optional type_parameter_constraints_clauses specification, followed by an interface_body, optionally followed by a semicolon.
+                </P>
+                <P>
+                    An interface declaration shall not supply a type_parameter_constraints_clauses unless it also supplies a type_parameter_list.
+                </P>
+                <P>
+                    An interface declaration that supplies a type_parameter_list is a generic interface declaration.
+                </P>
+            </article>
         </section>
         <section id="enums" class="main-section">
             <header>Enums</header>
+            <p>
+                An enum type is a distinct value type that declares a set of named constants.
+            </p>
+            <p>
+                The example below...
+            </p>
+            <pre>
+                <code class="language-csharp">
+enum Color
+{
+   Red,
+   Green,
+   Blue
+}
+                </code>
+            </pre>
+            <p>
+                ...declares an enum type named <code class="language-charp">Color</code> with memebers <code class="language-charp">Red</code>, <code class="language-charp">Green</code>, and <code class="language-charp">Blue</code>.
+            </p>
         </section>
-        <section id="delegates" class="main-section">
-            <header>Delegates</header>
+        <section id="reference" class="main-section">
+            <header>Reference</header>
+            <article>
+                <ul>
+                    <li>All the documentation in this page is taken from <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/enums" target="_blank">Microsoft Documentation</a>.</li>
+                </ul>
+            </article>
         </section>
     </main>
+
+    <footer>
+
+    </footer>
 
     <!--Prism Scripts-->
     <script src="js/prism.js"></script>
