@@ -57,6 +57,21 @@ body {
     padding-bottom: 5px;
 }
 
+@media only screen and (max-width: 700px) {
+    #navbar{
+        width: 100%;
+        height: 250px;
+        position: fixed;
+        top: 0;
+        padding: 20px 0px;
+        z-index: 1;
+    }
+    #navbar ul {
+        height: 200px;
+        border-bottom: 1px solid black;
+    }
+}
+
 /*Main*/
 #main-doc header {
     text-align: left;
@@ -85,19 +100,6 @@ code[class*=language-] {
 }
 
 @media only screen and (max-width: 700px) {
-    #navbar{
-        width: 100%;
-        height: 250px;
-        position: fixed;
-        top: 0;
-        padding: 20px 0px;
-        z-index: 1;
-    }
-    #navbar ul {
-        height: 200px;
-        border-bottom: 1px solid black;
-    }
-
     #main-doc {
         position: relative;
         top: 300px;
@@ -107,4 +109,20 @@ code[class*=language-] {
     #main-doc header {
         margin-left: 30px;
     }
+}
+
+/*Footer*/
+.footer *{
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    position: relative;
+    color: black;
+    background: white;
+    bottom: 0;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 15px;
 }
