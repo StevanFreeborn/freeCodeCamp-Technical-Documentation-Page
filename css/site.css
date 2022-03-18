@@ -1,4 +1,10 @@
 /*Utilities*/
+@media only screen and (max-width: 700px) {
+    html {
+        scroll-padding-top: 300px;
+    }
+}
+
 html,
 body {
     min-width: 300px;
@@ -102,7 +108,7 @@ code[class*=language-] {
 @media only screen and (max-width: 700px) {
     #main-doc {
         position: static;
-        top: 300px;
+        padding-top: 300px;
         margin-left: 0;
     }
 
